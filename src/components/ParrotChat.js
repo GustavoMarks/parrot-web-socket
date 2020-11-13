@@ -8,7 +8,7 @@ import styles from '../styles/ParrotChatStyle';
 
 export default function ParrotChat() {
   const [message, setMessage] = useState('');
-  const [chat, setChat] = useState([]);                                      // chat será uma lista de objetos: { text, time, sent(?) }
+  const [chat, setChat] = useState([]);                                      // chat será uma lista de objetos com o tempo e mensagem
   const [openSocket, setOpenSocket] = useState(false);
 
   const echoSocket = new EchoSocket();
@@ -19,25 +19,22 @@ export default function ParrotChat() {
 
   function handleSubmitChat() {
     if (message && openSocket) {
-      const newChat = chat.concat([{ text: message, sent: true, time: new Date() }]);
-      setChat(newChat);
       echoSocket.submit(message);
-      
+      setMessage('');
     }
 
     if (!openSocket) alert("Aguarde um momento...");
   }
 
   function handleSocketResponse(event) {
-    const newChatResponse = chat.concat([{ text: event.data, sent: false, time: new Date() }]);
+    const newChatResponse = chat.concat([{ time: new Date(), userMessage: event.data }, { time: new Date(), parrotMessage: event.data }]);
     setChat(newChatResponse);
   }
 
   function handleSocketError(event) {
     const newChatError = chat.concat([{
-      text: `Desculpe, tente novamente mais tarde... (ERROR: ${event.data})`,
-      sent: false,
-      time: new Date()
+      time: new Date(),
+      parrotMessage: `Desculpe, tente novamente mais tarde... (ERROR: ${event.data})`
     }]);
     setChat(newChatError);
 
@@ -52,10 +49,10 @@ export default function ParrotChat() {
           chat.length === 0 ? (
             <Text> Diga Olá </Text>
           ) : (
-              chat.map(chatMessage => {
+              chat.map((chatMessage, index) => {
                 return (
-                  <Text key={String(chatMessage.time)}>
-                    { chatMessage.sent === true ? 'VOCÊ: ' : 'PAPAGAIO: '} { chatMessage.text}
+                  <Text key={index}>
+                    { chatMessage.parrotMessage ? `PAPAGAIO: ${chatMessage.parrotMessage}` : `VOCÊ: ${chatMessage.userMessage}` }
                   </Text>
                 )
               })
