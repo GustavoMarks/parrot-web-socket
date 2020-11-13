@@ -5,7 +5,15 @@ export default class EchoSocket {
 
   submit(message, handleError) {
     try {
-      this.socket.send(message);
+      // Enviando mensagen apenas em conexão no estado "OPEN"
+      if (this.socket.readyState === 1) { this.socket.send(message); }
+      // Tentando novamente após 10 milisegundos
+      else {
+        console.log('Falha ao tentar enviar mesangem para socket... Tentando novamente');
+        setTimeout(() => { this.submit(message, handleError) }, 1000);
+        // Caso conexão com o soket seja encerrada
+        if(this.socket.readyState === 3) return handleError();
+      }
 
     } catch (error) {
       console.log(error);
