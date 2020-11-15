@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
+import { Feather } from "@expo/vector-icons";
 
 import EchoSocket from '../services/EchoSocket';
 
@@ -62,14 +63,15 @@ export default function ParrotChat() {
         }
       </View>
 
-      <View>
+      <View style={styles.inputArea}>
         <TextInput
           value={message}
           onChangeText={text => setMessage(text)}
+          style={styles.submitInput}
         />
 
-        <TouchableOpacity onPress={handleSubmitChat} >
-          <Text>Enviar </Text>
+        <TouchableOpacity style={styles.submitButton} onPress={handleSubmitChat} >
+          <Feather name="chevron-right" size={20} color="#222222" />
         </TouchableOpacity>
       </View>
     </View>
