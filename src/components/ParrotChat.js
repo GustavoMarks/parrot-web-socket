@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 
 import EchoSocket from '../services/EchoSocket';
 
@@ -42,7 +41,10 @@ export default function ParrotChat() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <StatusBar backgroundColor='#00c272' />
+      <View style={styles.header} >
+        <Text style={styles.headerText} > Parrot Web Socket </Text>
+      </View>
 
       <View>
         {
@@ -52,7 +54,7 @@ export default function ParrotChat() {
               chat.map((chatMessage, index) => {
                 return (
                   <Text key={index}>
-                    { chatMessage.parrotMessage ? `PAPAGAIO: ${chatMessage.parrotMessage}` : `VOCÊ: ${chatMessage.userMessage}` }
+                    { chatMessage.parrotMessage ? `PAPAGAIO: ${chatMessage.parrotMessage}` : `VOCÊ: ${chatMessage.userMessage}`}
                   </Text>
                 )
               })
