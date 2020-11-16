@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
+
+import ChatHistory from "./ChatHistory";
 import { Feather } from "@expo/vector-icons";
 
 import EchoSocket from '../services/EchoSocket';
@@ -47,27 +49,14 @@ export default function ParrotChat() {
         <Text style={styles.headerText} > Parrot Web Socket </Text>
       </View>
 
-      <View>
-        {
-          chat.length === 0 ? (
-            <Text> Diga Olá </Text>
-          ) : (
-              chat.map((chatMessage, index) => {
-                return (
-                  <Text key={index}>
-                    { chatMessage.parrotMessage ? `PAPAGAIO: ${chatMessage.parrotMessage}` : `VOCÊ: ${chatMessage.userMessage}`}
-                  </Text>
-                )
-              })
-            )
-        }
-      </View>
+      <ChatHistory chat={chat}/>
 
       <View style={styles.inputArea}>
         <TextInput
           value={message}
           onChangeText={text => setMessage(text)}
           style={styles.submitInput}
+          placeholder="Escrever..."
         />
 
         <TouchableOpacity style={styles.submitButton} onPress={handleSubmitChat} >
