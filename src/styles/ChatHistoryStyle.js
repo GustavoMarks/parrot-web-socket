@@ -20,6 +20,14 @@ const ChatHistoryStyle = StyleSheet.create({
   suggestionText: {
     color: '#fff',
     fontFamily: 'Nunito_600SemiBold'
+  },
+
+  parrot: {
+    width: 60,
+    height: 60,
+    position: 'absolute',
+    marginLeft: -5,
+    zIndex: 1000,
   }
 
 });

@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView, View, Text} from 'react-native';
+import { ScrollView, View, Text, Image} from 'react-native';
 
 import ChatBubble from './ChatBubble';
+import parrot from "../Images/parrot.png"
 
 import styles from "../styles/ChatHistoryStyle";
 
@@ -14,7 +15,9 @@ export default function ChatHistory({ chat }){
         justifyContent: 'flex-end',
         alignItems: 'flex-start'
       }} >
-        
+
+      <Image style={styles.parrot} source={parrot}/>
+
       {
         chat.length === 0 ? (
           <View style={styles.suggestionTextField} >

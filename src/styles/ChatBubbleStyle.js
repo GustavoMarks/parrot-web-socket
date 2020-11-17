@@ -8,7 +8,7 @@ const ChatBubbleStyle = StyleSheet.create({
     maxWidth: '70%',
     width: 'auto',
     borderRadius: 18,
-    marginLeft: 10,
+    marginLeft: 70,
   },
   bubbleUser: {
     backgroundColor: '#dcdcdc',
