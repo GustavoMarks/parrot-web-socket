@@ -27,7 +27,7 @@ export default function ChatHistory({ chat }){
               chat.map((chatMessage, index) => {
                 return (
                 <ChatBubble
-                  index={index}
+                  key={index}
                   message={chatMessage.message} 
                   sent={chatMessage.sent}
                   time={chatMessage.time} />
