@@ -4,7 +4,7 @@ const ChatHistoryStyle = StyleSheet.create({
   chatContainer: {
     padding: 10,
     height: '100%',
-    backgroundColor: '#9accff'
+    marginHorizontal: 0,
   },
   suggestionTextField: {
     backgroundColor: '#b3b3b3',
@@ -13,7 +13,8 @@ const ChatHistoryStyle = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: 'center'
+    alignSelf: 'center',
+    opacity: 0.8,
   },
 
   suggestionText: {

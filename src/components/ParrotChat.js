@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, StatusBar, ImageBackground } from 'react-native';
 
 import ChatHistory from "./ChatHistory";
 import { Feather } from "@expo/vector-icons";
+import background from '../Images/background.png';
 
 import EchoSocket from '../services/EchoSocket';
 
@@ -44,25 +45,34 @@ export default function ParrotChat() {
 
   return (
     <View style={styles.container}>
+      <ImageBackground source={background} resizeMethod="resize" resizeMode="repeat" style={styles.background}>
+
       <StatusBar backgroundColor='#00c272' />
       <View style={styles.header} >
         <Text style={styles.headerText} > Parrot Web Socket </Text>
       </View>
+      
 
-      <ChatHistory chat={chat}/>
+        <ChatHistory chat={chat}/>
 
-      <View style={styles.inputArea}>
-        <TextInput
-          value={message}
-          onChangeText={text => setMessage(text)}
-          style={styles.submitInput}
-          placeholder="Escrever..."
-        />
 
-        <TouchableOpacity style={styles.submitButton} onPress={handleSubmitChat} >
-          <Feather name="chevron-right" size={20} color="#222222" />
-        </TouchableOpacity>
-      </View>
+        <View style={styles.inputArea}>
+          <TextInput
+            value={message}
+            onChangeText={text => setMessage(text)}
+            style={styles.submitInput}
+            placeholder="Escrever..."
+          />
+
+          <TouchableOpacity style={styles.submitButton} onPress={handleSubmitChat} >
+            <Feather
+              name="chevron-right"
+              size={20}
+              color="#222222" />
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+
     </View>
   );
 }

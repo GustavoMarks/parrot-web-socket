@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text} from 'react-native';
 
 import styles from "../styles/ChatHistoryStyle";
 
@@ -11,6 +11,7 @@ export default function ChatHistory({ chat }){
         flexGrow: 1,
         justifyContent: 'flex-end'
       }} >
+        
       {
         chat.length === 0 ? (
           <View style={styles.suggestionTextField} >

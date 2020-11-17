@@ -5,7 +5,6 @@ const ParrotChatStyle = StyleSheet.create({
     flex: 1,
     height: '100%',
     backgroundColor: '#fff',
-    justifyContent: 'space-between'
   },
   header: {
     backgroundColor: '#00c272',
@@ -48,6 +47,16 @@ const ParrotChatStyle = StyleSheet.create({
     borderColor: '#222222',
     borderWidth: 2,
     fontFamily: 'Nunito_600SemiBold'
+  },
+
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    marginHorizontal: 0,
+    position: "absolute",
+    margin: 0,
   }
 });
 
