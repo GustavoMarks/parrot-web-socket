@@ -30,14 +30,24 @@ export default function ParrotChat() {
   }
 
   function handleSocketResponse(event) {
-    const newChatResponse = chat.concat([{ time: new Date(), userMessage: event.data }, { time: new Date(), parrotMessage: event.data }]);
+    const newChatResponse = chat.concat([{
+      time: new Date(),
+      message: event.data,
+      sent: true,
+    }, {
+      time: new Date(),
+      message: event.data,
+      sent: false
+    }]);
+
     setChat(newChatResponse);
   }
 
   function handleSocketError(event) {
     const newChatError = chat.concat([{
       time: new Date(),
-      parrotMessage: `Desculpe, tente novamente mais tarde... (ERROR: ${event.data})`
+      message: `Desculpe, tente novamente mais tarde... (ERROR: ${event.data})`,
+      sent: false
     }]);
     setChat(newChatError);
 

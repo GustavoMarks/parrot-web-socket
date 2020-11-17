@@ -1,6 +1,8 @@
 import React from 'react';
 import { ScrollView, View, Text} from 'react-native';
 
+import ChatBubble from './ChatBubble';
+
 import styles from "../styles/ChatHistoryStyle";
 
 export default function ChatHistory({ chat }){
@@ -9,7 +11,8 @@ export default function ChatHistory({ chat }){
       style={styles.chatContainer}
       contentContainerStyle={{
         flexGrow: 1,
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        alignItems: 'flex-start'
       }} >
         
       {
@@ -20,9 +23,11 @@ export default function ChatHistory({ chat }){
           ) : (
               chat.map((chatMessage, index) => {
                 return (
-                  <Text key={index}>
-                    { chatMessage.parrotMessage ? `PAPAGAIO: ${chatMessage.parrotMessage}` : `VOCÊ: ${chatMessage.userMessage}`}
-                  </Text>
+                <ChatBubble
+                  index={index}
+                  message={chatMessage.message} 
+                  sent={chatMessage.sent}
+                  time={chatMessage.time} />
                 )
               })
             )
