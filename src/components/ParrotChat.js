@@ -3,7 +3,7 @@ import { Text, View, TextInput, TouchableOpacity, StatusBar, ImageBackground } f
 
 import ChatHistory from "./ChatHistory";
 import { Feather } from "@expo/vector-icons";
-import background from '../Images/background.png';
+import background from '../Images/background.jpg';
 
 import EchoSocket from '../services/EchoSocket';
 

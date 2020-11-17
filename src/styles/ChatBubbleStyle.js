@@ -9,6 +9,7 @@ const ChatBubbleStyle = StyleSheet.create({
     width: 'auto',
     borderRadius: 18,
     marginLeft: 70,
+    elevation: 4,
   },
   bubbleUser: {
     backgroundColor: '#dcdcdc',
@@ -18,6 +19,7 @@ const ChatBubbleStyle = StyleSheet.create({
     borderRadius: 18,
     alignSelf: 'flex-end',
     marginRight: 10,
+    elevation: 4
   },
   bubbleText: {
     fontFamily: 'Nunito_600SemiBold'
